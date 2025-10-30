@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Projetos — ONG Ações Solidárias</title>
+  <meta name="description" content="Gestão de projetos, galeria, categorização e detalhes dos projetos sociais.">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Logo ONG">
+        <h1>Gestão de Projetos</h1>
+      </div>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">☰</button>
+
+      <nav id="main-nav" aria-label="Menu principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="projetos.html">Projetos</a></li>
+          <li><a href="cadastro.html">Cadastro & Doações</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+    <!-- filtros e categorização -->
+    <section class="section col-12" id="categorias">
+      <h2>Categorias</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <span class="badge">Educação</span>
+        <span class="badge success">Saúde</span>
+        <span class="badge secondary">Meio Ambiente</span>
+        <span class="badge">Alimentação</span>
+      </div>
+    </section>
+
+    <!-- galeria -->
+    <section class="section col-12" id="galeria" style="margin-top:24px;">
+      <h2>Galeria de Fotos e Vídeos</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+        <div class="card">
+          <img src="img/projeto1.jpg" alt="Entrega de alimentos" style="width:100%;border-radius:8px;margin-bottom:12px;">
+          <h3>Entrega de Alimentos</h3>
+          <p>Distribuição mensal para famílias</p>
+        </div>
+
+        <div class="card">
+          <img src="img/projeto2.jpg" alt="Aula de reforço" style="width:100%;border-radius:8px;margin-bottom:12px;">
+          <h3>Aulas de Reforço</h3>
+          <p>Oficinas e reforço escolar</p>
+        </div>
+
+        <div class="card">
+          <video controls style="width:100%;border-radius:8px;">
+            <source src="videos/acao.mp4" type="video/mp4">Seu navegador não suporta vídeo.
+          </video>
+          <h3>Vídeo Institucional</h3>
+          <p>Conheça nossas ações em 3 minutos</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- lista de projetos / cadastro detalhado -->
+    <section class="section col-12" id="cadastro-projetos" style="margin-top:24px;">
+      <h2>Projetos (Resumo)</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+        <article class="card">
+          <h3>Alimenta Esperança <span class="badge" style="float:right">Alimentação</span></h3>
+          <p>Meta anual: 12.000 refeições.</p>
+          <p><strong>Indicadores:</strong> famílias atendidas / % de satisfação</p>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <button class="btn" onclick="openProject(1)">Ver detalhe</button>
+            <button class="btn btn-outline" onclick="showToast('Compartilhar projeto')">Compartilhar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Educação para o Futuro <span class="badge secondary" style="float:right">Educação</span></h3>
+          <p>Reforço escolar e cursos profissionalizantes.</p>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <button class="btn" onclick="openProject(2)">Ver detalhe</button>
+            <button class="btn btn-outline" onclick="showToast('Inscrições abertas')">Inscrever</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer style="padding:16px;border-top:1px solid var(--border);background:#fff;">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+      <div>&copy; 2025 ONG Ações Solidárias</div>
+      <div><small>Transparência e responsabilidade</small></div>
+    </div>
+  </footer>
+
+  <!-- Project modal (example of detailed project) -->
+  <div id="projectModal" class="modal" aria-hidden="true" aria-labelledby="projectTitle">
+    <div class="modal-content" role="document">
+      <h3 id="projectTitle">Detalhe do Projeto</h3>
+      <div id="projectBody">
+        <!-- filled by JS -->
+      </div>
+      <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px;">
+        <button class="btn" onclick="closeModal('projectModal')">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-root" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+    /* MENU */
+    document.addEventListener('DOMContentLoaded', function(){
+      const toggle = document.querySelectorAll('.menu-toggle');
+      const nav = document.querySelector('nav');
+      toggle.forEach(btn => btn.addEventListener('click', () => nav.classList.toggle('active')));
+    });
+
+    /* Project modal population */
+    const PROJECTS = {
+      1: { title: 'Alimenta Esperança', desc: 'Distribuição de cestas e refeições mensais. Meta: 12.000 refeições/ano. Necessidades: alimentos, transporte, voluntários.' },
+      2: { title: 'Educação para o Futuro', desc: 'Cursos profissionalizantes e reforço escolar para jovens. Meta: 200 beneficiários/ano.' }
+    };
+
+    function openProject(id){
+      const p = PROJECTS[id];
+      document.getElementById('projectTitle').textContent = p.title;
+      document.getElementById('projectBody').innerHTML = '<p>'+p.desc+'</p><p><strong>Como participar:</strong> Acesse a aba de voluntariado ou preencha o formulário de cadastro.</p>';
+      document.getElementById('projectModal').classList.add('active');
+    }
+    function closeModal(id){ document.getElementById(id).classList.remove('active'); }
+
+    /* TOAST */
+    function showToast(message, timeout=3000){
+      const root = document.getElementById('toast-root');
+      const t = document.createElement('div');
+      t.className = 'toast';
+      t.textContent = message;
+      root.appendChild(t);
+      setTimeout(()=> t.remove(), timeout);
+    }
+  </script>
+</body>
+</html>
 
