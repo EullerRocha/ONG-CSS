@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>ONG Ações Solidárias — Início</title>
+  <meta name="description" content="ONG Ações Solidárias - projetos sociais, voluntariado e doações.">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <link rel="canonical" href="https://www.example.org/">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container header-inner" role="banner">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Logo ONG Ações Solidárias">
+        <h1>ONG Ações Solidárias</h1>
+      </div>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">☰</button>
+
+      <nav id="main-nav" role="navigation" aria-label="Menu principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li>
+            <a href="projetos.html">Projetos</a>
+            <ul>
+              <li><a href="projetos.html#categorias">Categorias</a></li>
+              <li><a href="projetos.html#galeria">Galeria</a></li>
+            </ul>
+          </li>
+          <li><a href="cadastro.html">Cadastro & Doações</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+    <!-- Institucional -->
+    <section class="section col-12" id="institucional">
+      <h2>Quem Somos</h2>
+      <p>A ONG Ações Solidárias promove ações sociais nas áreas de educação, saúde e alimentação desde 2010.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;">
+        <div class="card">
+          <h3>Missão</h3>
+          <p>Promover dignidade e oportunidades para comunidades vulneráveis.</p>
+        </div>
+        <div class="card">
+          <h3>Visão</h3>
+          <p>Ser referência nacional em ações colaborativas que transformem realidades locais.</p>
+        </div>
+        <div class="card">
+          <h3>Valores</h3>
+          <ul>
+            <li>Transparência</li>
+            <li>Solidariedade</li>
+            <li>Respeito</li>
+            <li>Sustentabilidade</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Histórico e conquistas -->
+    <section class="section col-12 u-mt-3" id="historico" style="margin-top:24px;">
+      <h2>Histórico & Conquistas</h2>
+      <ul>
+        <li><strong>2015</strong> — Criação do programa Alimenta Esperança</li>
+        <li><strong>2018</strong> — 10.000 refeições distribuídas</li>
+        <li><strong>2022</strong> — Parcerias de capacitação profissional</li>
+      </ul>
+    </section>
+
+    <!-- Equipe -->
+    <section class="section col-12 u-mt-3" id="equipe" style="margin-top:24px;">
+      <h2>Equipe & Estrutura</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div class="card">
+          <h3>Diretoria</h3>
+          <p>Maria Silva — Diretora Executiva</p>
+        </div>
+        <div class="card">
+          <h3>Coordenação de Projetos</h3>
+          <p>João Pereira — Coordenador</p>
+        </div>
+        <div class="card">
+          <h3>Captação & Comunicação</h3>
+          <p>Ana Costa — Responsável</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Campanhas -->
+    <section class="section col-12 u-mt-3" id="campanhas" style="margin-top:24px;">
+      <h2>Campanhas Ativas</h2>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <div class="card" style="flex:1;min-width:260px;">
+          <h3>Doe Esperança</h3>
+          <p>Arrecadação de cobertores e alimentos para o inverno.</p>
+          <a class="btn" href="cadastro.html#doacoes">Contribua</a>
+        </div>
+        <div class="card" style="flex:1;min-width:260px;">
+          <h3>Capacitação Profissional</h3>
+          <p>Inscrições abertas para cursos gratuitos.</p>
+          <a class="btn btn-outline" href="projetos.html#cadastro-projetos">Saiba mais</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog (resumo) -->
+    <section class="section col-12 u-mt-3" id="blog" style="margin-top:24px;">
+      <h2>Notícias e Transparência</h2>
+      <article class="card" style="margin-bottom:16px;">
+        <h3>Mutirão Solidário</h3>
+        <p>Mais de 100 voluntários participaram na última ação — 500 kits entregues.</p>
+        <small>Publicado: 10 de outubro de 2025</small>
+      </article>
+      <a class="btn" href="blog.html">Ver todas as notícias</a>
+    </section>
+  </main>
+
+  <footer style="background:#fff;padding:16px;border-top:1px solid var(--border);">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
+      <div>
+        <p style="margin:0;">&copy; 2025 ONG Ações Solidárias</p>
+        <small>CNPJ: 00.000.000/0001-00 — contato@acoes-solidarias.org.br</small>
+      </div>
+      <div>
+        <a class="badge" href="#">Facebook</a>
+        <a class="badge secondary" href="#">Instagram</a>
+        <a class="badge" href="#">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal example -->
+  <div id="modalDonate" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalDonateTitle">
+    <div class="modal-content">
+      <h3 id="modalDonateTitle">Doação Segura</h3>
+      <p>Você será redirecionado para um gateway de pagamento seguro.</p>
+      <div style="display:flex;gap:8px;justify-content:flex-end;">
+        <button class="btn" onclick="closeModal('modalDonate')">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- toast container (injected by JS) -->
+  <div id="toast-root" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+    /* MENU HAMBURGER + DROPDOWN */
+    document.addEventListener('DOMContentLoaded', function(){
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      toggle && toggle.addEventListener('click', function(){
+        const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+        this.setAttribute('aria-expanded', !expanded);
+        nav.classList.toggle('active');
+      });
+    });
+
+    /* MODAL HELPERS */
+    function openModal(id){ document.getElementById(id).classList.add('active'); }
+    function closeModal(id){ document.getElementById(id).classList.remove('active'); }
+
+    /* TOAST helper */
+    function showToast(message, timeout=3500){
+      const root = document.getElementById('toast-root');
+      const t = document.createElement('div');
+      t.className = 'toast';
+      t.textContent = message;
+      root.appendChild(t);
+      setTimeout(()=> t.remove(), timeout);
+    }
+  </script>
+</body>
+</html>
 
