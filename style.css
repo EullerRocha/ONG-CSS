@@ -1,0 +1,332 @@
+/* =========================================================
+   SISTEMA DE DESIGN - ONG AÇÕES SOLIDÁRIAS (style.css)
+   - Paleta, tipografia, espaçamento modular, grid 12 colunas
+   - Componentes: botões, cards, badges, alerts, toasts, modal
+   - Menu responsivo, dropdown e hamburger
+   - 5 breakpoints
+   ========================================================= */
+
+/* -------------------------
+   CORES (mínimo 8)
+   ------------------------- */
+:root{
+  /* Primárias */
+  --primary: #0077cc;
+  --primary-100: #3399ff;
+  --primary-700: #005fa3;
+
+  /* Secundárias */
+  --secondary: #ff9800;
+  --secondary-100: #ffb74d;
+  --secondary-700: #e68900;
+
+  /* Neutras e feedback */
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --border: #e6e9ef;
+  --success: #16a34a;
+  --error: #ef4444;
+  --shadow: rgba(15, 23, 42, 0.06);
+}
+
+/* -------------------------
+   TIPOGRAFIA & BASE
+   ------------------------- */
+html,body{height:100%;}
+body{
+  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.6;
+}
+
+/* Tipografia hierárquica (5 tamanhos mínimo) */
+h1{font-size:2.4rem;line-height:1.1;margin:0 0 0.6rem;font-weight:700;}
+h2{font-size:1.8rem;margin:0 0 0.5rem;font-weight:700;}
+h3{font-size:1.375rem;margin:0 0 0.4rem;font-weight:600;}
+h4{font-size:1.125rem;margin:0 0 0.35rem;font-weight:600;}
+p, label, li, input, button{font-size:1rem;}
+small{font-size:0.875rem;color:var(--muted);}
+
+/* -------------------------
+   ESPAÇAMENTO MODULAR (8px..64px)
+   ------------------------- */
+:root{
+  --sp-1: 8px;
+  --sp-2: 16px;
+  --sp-3: 24px;
+  --sp-4: 32px;
+  --sp-5: 48px;
+  --sp-6: 64px;
+}
+
+/* Utility spacing */
+.u-mb-1{margin-bottom:var(--sp-1);}
+.u-mb-2{margin-bottom:var(--sp-2);}
+.u-mb-3{margin-bottom:var(--sp-3);}
+.u-p-2{padding:var(--sp-2);}
+
+/* -------------------------
+   GRID 12 COLUNAS (container)
+   ------------------------- */
+.container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 var(--sp-2);
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--sp-3);
+}
+
+/* Column helpers */
+.col-1{grid-column: span 1;}
+.col-2{grid-column: span 2;}
+.col-3{grid-column: span 3;}
+.col-4{grid-column: span 4;}
+.col-6{grid-column: span 6;}
+.col-12{grid-column: span 12;}
+
+/* at small screens all span 12 by default (handled by grid fallback) */
+
+/* -------------------------
+   HEADER / NAV
+   ------------------------- */
+header{
+  background:var(--primary);
+  color:white;
+  padding: var(--sp-2);
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  gap: var(--sp-3);
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:var(--sp-2);
+}
+.brand img{height:44px;width:auto;border-radius:6px;}
+.brand h1{font-size:1.125rem;color:white;margin:0;font-weight:700;}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:var(--sp-2);
+}
+nav ul{list-style:none;display:flex;gap:var(--sp-2);margin:0;padding:0;align-items:center;}
+nav li{position:relative;}
+nav a{
+  color:white;
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:6px;
+  display:inline-block;
+}
+nav a:hover, nav a:focus{background:rgba(255,255,255,0.08);}
+
+/* Submenu dropdown */
+nav li > ul{
+  display:none;
+  position:absolute;
+  top:44px;
+  left:0;
+  background:var(--primary-700);
+  min-width:180px;
+  border-radius:8px;
+  padding:8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+nav li:focus-within > ul,
+nav li:hover > ul{ display:block; }
+nav li > ul a{ color:white; display:block; padding:8px; border-radius:6px; }
+nav li > ul a:hover{ background:rgba(255,255,255,0.06); }
+
+/* Menu toggle (hamburger) */
+.menu-toggle{
+  display:none;
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.18);
+  color:white;
+  padding:8px;
+  border-radius:6px;
+  font-size:1.125rem;
+}
+
+/* -------------------------
+   MAIN LAYOUT & SECTIONS
+   ------------------------- */
+main{padding: var(--sp-4) 0;}
+.section{
+  background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6));
+  padding: var(--sp-3);
+  border-radius:10px;
+  border:1px solid var(--border);
+}
+
+/* -------------------------
+   CARDS
+   ------------------------- */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:var(--sp-3);
+  box-shadow: 0 6px 18px var(--shadow);
+  transition: transform 0.18s ease, box-shadow 0.18s;
+}
+.card:hover{ transform: translateY(-6px); box-shadow: 0 12px 30px rgba(15,23,42,0.12); }
+
+/* -------------------------
+   BADGES & TAGS
+   ------------------------- */
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:0.85rem;
+  color:white;
+  background:var(--primary);
+}
+.badge.secondary{ background:var(--secondary); }
+.badge.success{ background:var(--success); }
+
+/* -------------------------
+   BOTÕES (estados)
+   ------------------------- */
+.btn{
+  display:inline-block;
+  background:var(--primary);
+  color:white;
+  border:none;
+  padding:10px 16px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  transition: transform 0.12s ease, background 0.12s;
+}
+.btn:hover{ background:var(--primary-700); transform: translateY(-2px); }
+.btn:active{ background:var(--secondary); transform: translateY(0); }
+.btn:focus{ outline:3px solid rgba(255,152,0,0.18); outline-offset:2px; }
+.btn[disabled]{ background:var(--border); color:var(--muted); cursor:not-allowed; }
+
+/* variant */
+.btn-outline{
+  background:transparent;
+  border:1px solid var(--primary);
+  color:var(--primary);
+}
+.btn-outline:hover{ background:var(--primary); color:white; }
+
+/* -------------------------
+   ALERTS
+   ------------------------- */
+.alert{
+  padding:var(--sp-2);
+  border-radius:8px;
+  margin-bottom:var(--sp-2);
+  border:1px solid transparent;
+}
+.alert.info{ background:#e6f7ff; color:#055160; border-color:#bfeaf8; }
+.alert.success{ background:#ecfdf5; color:#065f46; border-color:#bbf7d0; }
+.alert.error{ background:#fff1f2; color:#7f1d1d; border-color:#fecaca; }
+
+/* -------------------------
+   TOAST
+   ------------------------- */
+.toast{
+  position:fixed;
+  right: var(--sp-3);
+  bottom: var(--sp-3);
+  background:var(--secondary);
+  color:white;
+  padding:var(--sp-2);
+  border-radius:8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  z-index:2000;
+}
+
+/* -------------------------
+   MODAL
+   ------------------------- */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,0.6);
+  align-items:center;
+  justify-content:center;
+  padding:var(--sp-3);
+  z-index:2000;
+}
+.modal.active{ display:flex; }
+.modal .modal-content{
+  background:var(--surface);
+  border-radius:12px;
+  padding:var(--sp-3);
+  width:100%;
+  max-width:640px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.28);
+}
+
+/* -------------------------
+   FORMS
+   ------------------------- */
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], select, textarea {
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  box-sizing:border-box;
+  transition:box-shadow .12s, border-color .12s;
+}
+input:focus, select:focus, textarea:focus{ outline:none; box-shadow:0 6px 18px rgba(0,0,0,0.06); border-color:var(--primary-100); }
+
+/* -------------------------
+   RESPONSIVE (5 breakpoints)
+   ------------------------- */
+/* Breakpoints:
+   xl: >1200
+   lg: <=1200 (max-width:1200px)
+   md: <=992
+   sm: <=768
+   xs: <=576
+   xxs: <=400
+*/
+
+@media (max-width:1200px){
+  h1{font-size:2.2rem;}
+  .container{max-width:1100px;}
+}
+@media (max-width:992px){
+  h1{font-size:2rem;}
+  .col-6{grid-column: span 12;}
+  .col-4{grid-column: span 12;}
+}
+@media (max-width:768px){
+  .menu-toggle{display:inline-block;}
+  nav{display:none;}
+  nav.active{display:block; width:100%;}
+  nav ul{flex-direction:column; gap:8px; background:transparent; padding:var(--sp-2);}
+  header .header-inner{flex-direction:row; gap:var(--sp-2);}
+}
+@media (max-width:576px){
+  h2{font-size:1.4rem;}
+  .container{padding:0 var(--sp-1);}
+}
+@media (max-width:400px){
+  p, label, input, button{font-size:0.95rem;}
+}
